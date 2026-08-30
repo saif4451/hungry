@@ -4,6 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hungry/core/constants/app_colors.dart';
+import 'package:hungry/features/auth/views/signup_view.dart';
+import 'package:hungry/features/auth/widgets/custom_btn.dart';
 import 'package:hungry/shared/custom_text.dart';
 import 'package:hungry/shared/custom_text_field.dart';
 
@@ -24,11 +26,10 @@ class LoginView extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Form(
-              key: formkey ,
+              key: formkey,
               child: Column(
-              
                 children: [
-                  Gap(110.h),
+                  Gap(150.h),
                   // Logo
                   SvgPicture.asset('assets/logo/logo.svg'),
                   Gap(10.h),
@@ -53,18 +54,18 @@ class LoginView extends StatelessWidget {
                     icon: Icon(Icons.password),
                     isPassword: true,
                   ),
-                  Gap(10.h),
-              
+                  Gap(15.h),
+
                   Row(
                     children: [
                       Spacer(),
                       GestureDetector(
-                        onTap: (){
-                          // todo sign page
+                        onTap: () {
+                          
                         },
                         child: Text(
                           'Sign Now',
-                          
+
                           style: GoogleFonts.aBeeZee(
                             color: Colors.white,
                             decoration: TextDecoration.underline,
@@ -73,37 +74,18 @@ class LoginView extends StatelessWidget {
                           ),
                         ),
                       ),
-                    Gap(10.w)
+                      Gap(15.w),
                     ],
                   ),
                   Gap(80.h),
-                  // log in btn 
+                  // log in btn
                   GestureDetector(
-                    onTap: (){
-                      if(formkey.currentState!.validate()){
-                       // 
-                       
+                    onTap: () {
+                      if (formkey.currentState!.validate()) {
+                        //
                       }
-                      
-
                     },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      width: double.infinity,
-                      height: 55.h,
-                                  
-                      child: Center(
-                        child: CustomText(
-                          text: 'Login',
-                          color: AppColors.primaryColor,
-                          weight: FontWeight.w700,
-                          size: 20,
-                        ),
-                      ),
-                    ),
+                    child: CustomBtn(text: 'Login',),
                   ),
                 ],
               ),

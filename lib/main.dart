@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hungry/features/auth/view/login_view.dart';
-import 'package:hungry/features/splash/splash_screen.dart';
-
+import 'package:hungry/root.dart';
 void main() {
   runApp(MyApp());
 }
@@ -17,7 +15,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: LoginView(),
+          home:Root(),
         );
       },
     );
