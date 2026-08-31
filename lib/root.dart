@@ -27,7 +27,11 @@ class _RootState extends State<Root> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(controller: controller, children: screens),
+      body: PageView(
+        controller: controller,
+        physics: NeverScrollableScrollPhysics(),
+        children: screens,
+      ),
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -53,7 +57,7 @@ class _RootState extends State<Root> {
       backgroundColor: Colors.transparent,
       type: BottomNavigationBarType.fixed,
       selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.grey.shade700,
+      unselectedItemColor: Colors.grey.shade500,
       items: [
         BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(CupertinoIcons.cart), label: 'Cart'),

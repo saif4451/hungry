@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:hungry/root.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -15,7 +17,8 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home:Root(),
+          home: Root(),
+          theme: ThemeData(scaffoldBackgroundColor: Colors.white),
         );
       },
     );
