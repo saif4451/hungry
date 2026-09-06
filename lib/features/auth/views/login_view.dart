@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hungry/core/constants/app_colors.dart';
-import 'package:hungry/features/auth/widgets/custom_btn.dart';
+import 'package:hungry/features/auth/widgets/custom_login_btn.dart';
 import 'package:hungry/shared/custom_text.dart';
 import 'package:hungry/shared/custom_text_field.dart';
 
@@ -82,7 +82,7 @@ class LoginView extends StatelessWidget {
                         //
                       }
                     },
-                    child: CustomBtn(text: 'Login'),
+                    child: CustomLoginBtn(text: 'Login'),
                   ),
                 ],
               ),

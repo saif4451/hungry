@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hungry/core/constants/app_colors.dart';
 import 'package:hungry/shared/custom_text.dart';
 
-class CustomBtn extends StatelessWidget {
-  const CustomBtn({super.key, required this.text});
+class CustomLoginBtn extends StatelessWidget {
+  const CustomLoginBtn({super.key, required this.text});
   final String text;
 
   @override

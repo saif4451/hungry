@@ -1,10 +1,97 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
+import 'package:hungry/features/cart/widgets/card_item.dart';
+import 'package:hungry/shared/custom_text.dart';
+import 'package:hungry/shared/price_bar.dart';
 
-class CartView extends StatelessWidget {
+class CartView extends StatefulWidget {
   const CartView({super.key});
 
   @override
+  State<CartView> createState() => _CartViewState();
+}
+
+class _CartViewState extends State<CartView> {
+  final int itemCount = 4;
+  double total = 99.19;
+  late List<int> counterMele;
+
+  void onAdd(int index) {
+    setState(() {
+      counterMele[index]++;
+    });
+  }
+
+  void onMinus(int index) {
+    setState(() {
+      if (counterMele[index] > 1) {
+        counterMele[index]--;
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    counterMele = List.generate(itemCount, (_) => 1);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.deepOrange,);
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 45,
+        backgroundColor: Colors.white,
+        title: CustomText(text: 'Cart', weight: FontWeight.w600),
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
+          child: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              SliverGap(20.h),
+
+              SliverList.separated(
+                itemCount: itemCount,
+                itemBuilder: (context, index) {
+                  return CardItem(
+                    onAddTap: () {
+                      onAdd(index);
+                    },
+                    onMinusTap: () {
+                      onMinus(index);
+                    },
+                    image: 'assets/test.png',
+                    title: 'Hamburger',
+                    des: 'Veggie Burger',
+                    number: counterMele[index],
+                  );
+                },
+                separatorBuilder: (context, index) => Gap(10.h),
+              ),
+
+              SliverGap(20.h),
+
+              SliverToBoxAdapter(
+                
+                child: PriceBar(
+                  customBtnFontSize: 16,
+                  total: 99.19,
+                  customBtn: 'Checkout',
+                  customBtnHoreizentalPadding: 36,
+                  customBtnVerticalPadding: 21,
+                ),
+              ),
+
+              SliverGap(20.h),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

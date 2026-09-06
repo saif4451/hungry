@@ -5,6 +5,7 @@ import 'package:hungry/features/home/widgets/card_item.dart';
 import 'package:hungry/features/home/widgets/category_home.dart';
 import 'package:hungry/features/home/widgets/search.dart';
 import 'package:hungry/features/home/widgets/user_header.dart';
+import 'package:hungry/features/product/view/product_details_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -68,11 +69,18 @@ class _HomeViewState extends State<HomeView> {
                   context,
                   index,
                 ) {
-                  return CardItem(
-                    image: 'assets/sw${index + 1}.png',
-                    text: 'Cheeseburger',
-                    des: 'Wendy\'s Burger',
-                    rate: '4.9',
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                         return ProductDetailsView();
+                      },));
+                    },
+                    child: CardItem(
+                      image: 'assets/sw${index + 1}.png',
+                      text: 'Cheeseburger',
+                      des: 'Wendy\'s Burger',
+                      rate: '4.9',
+                    ),
                   );
                 }),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
-import 'package:hungry/features/auth/widgets/custom_btn.dart';
+import 'package:hungry/features/auth/widgets/custom_login_btn.dart';
 import 'package:hungry/shared/custom_text_field.dart';
 
 class SignupView extends StatefulWidget {
@@ -66,7 +66,7 @@ class _SignupViewState extends State<SignupView> {
                       //
                     }
                   },
-                  child: CustomBtn(text: 'Sign up'),
+                  child: CustomLoginBtn(text: 'Sign up'),
                 ),
               ],
             ),
