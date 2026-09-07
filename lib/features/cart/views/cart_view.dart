@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/features/cart/widgets/card_item.dart';
+import 'package:hungry/features/checkout/view/chekout_view.dart';
 import 'package:hungry/shared/custom_text.dart';
 import 'package:hungry/shared/price_bar.dart';
 
@@ -77,11 +78,14 @@ class _CartViewState extends State<CartView> {
               SliverGap(20.h),
 
               SliverToBoxAdapter(
-                
                 child: PriceBar(
                   customBtnFontSize: 16,
                   total: 99.19,
                   customBtn: 'Checkout',
+                  onBtnTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ChekoutView()),
+                  ),
                   customBtnHoreizentalPadding: 36,
                   customBtnVerticalPadding: 21,
                 ),

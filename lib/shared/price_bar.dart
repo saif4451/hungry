@@ -12,9 +12,11 @@ class PriceBar extends StatelessWidget {
     this.customBtnVerticalPadding = 20,
     this.customBtnHoreizentalPadding = 35,
     this.customBtnFontSize = 16,
+    this.onBtnTap,
   });
   final double total;
   final String customBtn;
+  final Function()? onBtnTap;
   final double customBtnVerticalPadding;
   final double customBtnHoreizentalPadding;
   final double customBtnFontSize;
@@ -22,7 +24,6 @@ class PriceBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      
       children: [
         Gap(12.w),
         Column(
@@ -35,15 +36,20 @@ class PriceBar extends StatelessWidget {
               spacing: 2,
               children: [
                 CustomText(text: 'EGP', size: 16.sp, weight: FontWeight.w900),
-                CustomText(text: '$total', size: 30.sp,weight: FontWeight.w700,),
+                CustomText(
+                  text: '$total',
+                  size: 30.sp,
+                  weight: FontWeight.w700,
+                ),
               ],
             ),
           ],
         ),
         Gap(120.w),
-        
+
         // btn
         CustomBtn(
+          onTap: onBtnTap,
           text: customBtn,
           verticalPadding: customBtnVerticalPadding,
           horizontalPadding: customBtnHoreizentalPadding,
