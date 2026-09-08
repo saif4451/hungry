@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:hungry/core/constants/app_colors.dart';
 import 'package:hungry/features/checkout/widget/check_out_rows.dart';
-
 import 'package:hungry/shared/price_bar.dart';
 
 class ChekoutView extends StatefulWidget {
@@ -15,6 +13,7 @@ class ChekoutView extends StatefulWidget {
 
 class _ChekoutViewState extends State<ChekoutView> {
   bool isChecked = false;
+  String selectedMethod = 'cash';
 
   @override
   Widget build(BuildContext context) {
@@ -101,14 +100,20 @@ class _ChekoutViewState extends State<ChekoutView> {
               leading: Image.asset('assets/cash.png'),
               trailing: Radio<String>(
                 activeColor: Colors.white,
-                value: 'Cash',
-                groupValue: 'Cash',
-                onChanged: (v) {},
+                value: 'cash',
+                groupValue: selectedMethod,
+                onChanged: (v) {
+                  setState(() {
+                    selectedMethod = v!;
+                  });
+                },
               ),
             ),
             Gap(27.h),
+
+            /// debit
             ListTile(
-              tileColor: Color(0xFFF3F4F6),
+              tileColor: Colors.blue.shade900,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
@@ -121,21 +126,30 @@ class _ChekoutViewState extends State<ChekoutView> {
                 children: [
                   Text(
                     'Debit Card',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                   Gap(5.h),
                   Text(
                     '3566 **** **** 0505',
-                    style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
+                    style: TextStyle(fontSize: 14, color: Colors.white),
                   ),
                 ],
               ),
               leading: Image.asset('assets/visa.png', width: 80.w),
               trailing: Radio<String>(
-                activeColor: AppColors.primaryColor,
-                value: 'cash',
-                groupValue: 'Cash',
-                onChanged: (v) {},
+                hoverColor: Colors.white,
+                activeColor: Colors.white,
+                value: 'visa',
+                groupValue: selectedMethod,
+                onChanged: (v) {
+                  setState(() {
+                    selectedMethod = v!;
+                  });
+                },
               ),
             ),
             Gap(10.h),

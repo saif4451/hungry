@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
+import 'package:hungry/features/checkout/view/chekout_view.dart';
 import 'package:hungry/shared/custom_btn.dart';
+
 import 'package:hungry/shared/custom_text.dart';
 
 class OrderHistory extends StatelessWidget {
@@ -12,13 +14,10 @@ class OrderHistory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 45,
-        backgroundColor: Colors.white,
-        title: CustomText(text: 'History',weight: FontWeight.w600,),
-        centerTitle: true,
-        elevation: 0,
-        
-        
+        title: Text(
+          'Order History',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.all(8),
@@ -29,7 +28,7 @@ class OrderHistory extends StatelessWidget {
               color: Colors.white,
               shadowColor: AppColors.greyColor,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
                 child: Column(
                   children: [
                     Row(
@@ -60,7 +59,15 @@ class OrderHistory extends StatelessWidget {
                       ],
                     ),
                     Gap(20.h),
-                    CustomBtn(text: 'RE-Oreder Now', size: 16),
+                    CustomBtn(
+                       
+                      text: 'RE-Oreder Now',
+                      size: 16,
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ChekoutView()),
+                      ),
+                    ),
                   ],
                 ),
               ),

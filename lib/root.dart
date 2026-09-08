@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hungry/core/constants/app_colors.dart';
-import 'package:hungry/features/auth/views/profile_view.dart';
 import 'package:hungry/features/cart/views/cart_view.dart';
 import 'package:hungry/features/home/views/home_view.dart';
 import 'package:hungry/features/orderHistory/views/order_history.dart';
+import 'package:hungry/features/setting/view/setting_view.dart';
 
 class Root extends StatefulWidget {
   const Root({super.key});
@@ -17,10 +18,11 @@ class _RootState extends State<Root> {
   late PageController controller;
   late List<Widget> screens;
   int currentScreen = 0;
+  
   @override
   void initState() {
     controller = PageController(initialPage: currentScreen);
-    screens = [HomeView(), CartView(), OrderHistory(), ProfileView()];
+    screens = [HomeView(), CartView(), OrderHistory(), SettingView()];
     super.initState();
   }
 
@@ -36,7 +38,7 @@ class _RootState extends State<Root> {
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: AppColors.primaryColor,
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(80),
         ),
         child: navigationBar(),
       ),
@@ -45,6 +47,10 @@ class _RootState extends State<Root> {
 
   BottomNavigationBar navigationBar() {
     return BottomNavigationBar(
+       
+      
+
+      showUnselectedLabels: false,
       enableFeedback: true,
       currentIndex: currentScreen,
       onTap: (index) {
@@ -66,8 +72,8 @@ class _RootState extends State<Root> {
           label: 'Order History',
         ),
         BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.profile_circled),
-          label: 'Prifile',
+          icon: Icon(CupertinoIcons.settings),
+          label: 'Setting',
         ),
       ],
     );

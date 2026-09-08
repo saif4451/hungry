@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
+import 'package:hungry/features/auth/views/profile_view.dart';
 import 'package:hungry/shared/custom_text.dart';
 
 class UserHeader extends StatelessWidget {
@@ -45,10 +46,16 @@ class UserHeader extends StatelessWidget {
         Spacer(),
 
         // User Image
-        CircleAvatar(
-          radius: 30,
-          backgroundColor: AppColors.primaryColor,
-          child: Icon(CupertinoIcons.person, color: Colors.white),
+        GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ProfileView()),
+          ),
+          child: CircleAvatar(
+            radius: 30,
+            backgroundColor: AppColors.primaryColor,
+            child: Icon(CupertinoIcons.person, color: Colors.white),
+          ),
         ),
       ],
     );

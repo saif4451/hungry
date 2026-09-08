@@ -25,7 +25,7 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
         body: CustomScrollView(
           slivers: [
-            //App bar
+            
             SliverAppBar(
               elevation: 0,
               pinned: true,
@@ -50,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
 
-            //  category
+            
             SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.only(right: 15.w, left: 15.w, bottom: 15.h),
@@ -61,7 +61,7 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
 
-            // Grid View
+            
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 15.w),
               sliver: SliverGrid(

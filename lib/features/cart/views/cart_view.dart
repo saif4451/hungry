@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/features/cart/widgets/card_item.dart';
 import 'package:hungry/features/checkout/view/chekout_view.dart';
-import 'package:hungry/shared/custom_text.dart';
 import 'package:hungry/shared/price_bar.dart';
 
 class CartView extends StatefulWidget {
@@ -42,11 +41,10 @@ class _CartViewState extends State<CartView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 45,
-        backgroundColor: Colors.white,
-        title: CustomText(text: 'Cart', weight: FontWeight.w600),
-        centerTitle: true,
-        elevation: 0,
+        title: Text(
+          'Cart',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+        ),
       ),
       body: SafeArea(
         child: Padding(
@@ -91,7 +89,7 @@ class _CartViewState extends State<CartView> {
                 ),
               ),
 
-              SliverGap(20.h),
+              SliverGap(30.h),
             ],
           ),
         ),
