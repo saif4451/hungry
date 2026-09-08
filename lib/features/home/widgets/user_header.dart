@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
-import 'package:hungry/features/auth/views/profile_view.dart';
+import 'package:hungry/features/profile/view/profile_view.dart';
 import 'package:hungry/shared/custom_text.dart';
 
 class UserHeader extends StatelessWidget {
@@ -14,14 +14,14 @@ class UserHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // Column logo & welcome word
+
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Gap(15.h),
 
-            // logo set
+
             SvgPicture.asset(
               'assets/logo/logo.svg',
               colorFilter: ColorFilter.mode(
@@ -33,7 +33,7 @@ class UserHeader extends StatelessWidget {
 
             Gap(5),
 
-            // welcome word
+
             CustomText(
               text: 'Hello , Saif Moamer',
               size: 18,
@@ -45,7 +45,7 @@ class UserHeader extends StatelessWidget {
 
         Spacer(),
 
-        // User Image
+
         GestureDetector(
           onTap: () => Navigator.push(
             context,
@@ -56,8 +56,7 @@ class UserHeader extends StatelessWidget {
             backgroundColor: AppColors.primaryColor,
             child: Icon(CupertinoIcons.person, color: Colors.white),
           ),
-        ),
-      ],
+        ),      ],
     );
   }
 }

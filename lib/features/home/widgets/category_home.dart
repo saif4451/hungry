@@ -3,47 +3,46 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hungry/core/constants/app_colors.dart';
 import 'package:hungry/shared/custom_text.dart';
 
-// ignore: must_be_immutable
-class CategoryHome extends StatefulWidget {
-  CategoryHome({
+class CategoryHome extends StatelessWidget {
+  const CategoryHome({
     super.key,
     required this.selectedIndex,
     required this.catogery,
+    this.onCategorySelected,
   });
-  late int selectedIndex;
-  final List catogery;
 
-  @override
-  State<CategoryHome> createState() => _CategoryHomeState();
-}
+  final int selectedIndex;
+  final List<String> catogery;
+  final ValueChanged<int>? onCategorySelected;
 
-class _CategoryHomeState extends State<CategoryHome> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: List.generate(widget.catogery.length, (index) {
+        children: List.generate(catogery.length, (index) {
+          final isSelected = selectedIndex == index;
+
           return GestureDetector(
             onTap: () {
-              setState(() {
-                widget.selectedIndex = index;
-              });
+              if (onCategorySelected != null) {
+                onCategorySelected!(index);
+              }
             },
-            child: Container(
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
               margin: EdgeInsets.symmetric(horizontal: 4.w),
+              padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10.h),
               decoration: BoxDecoration(
-                color: widget.selectedIndex == index
-                    ? AppColors.primaryColor
-                    : Color(0xffF3F4F6),
-                borderRadius: BorderRadius.circular(20),
+                color: isSelected ? AppColors.primaryColor : const Color(0xffF3F4F6),
+                borderRadius: BorderRadius.circular(20.r), // استخدام r للتجاوب
               ),
-              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
               child: CustomText(
-                text: widget.catogery[index],
-                size: 16,
-                weight: FontWeight.w600,
-                color: widget.selectedIndex == index ? Colors.white : null,
+                text: catogery[index],
+                size: 14.sp,
+                weight: isSelected ? FontWeight.bold : FontWeight.w500,
+                color: isSelected ? Colors.white : Colors.black87,
               ),
             ),
           );

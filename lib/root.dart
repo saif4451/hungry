@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hungry/core/constants/app_colors.dart';
 import 'package:hungry/features/cart/views/cart_view.dart';
-import 'package:hungry/features/home/views/home_view.dart';
+import 'features/home/views/home_view.dart';
 import 'package:hungry/features/orderHistory/views/order_history.dart';
 import 'package:hungry/features/setting/view/setting_view.dart';
 
@@ -18,38 +18,71 @@ class _RootState extends State<Root> {
   late PageController controller;
   late List<Widget> screens;
   int currentScreen = 0;
-  
+
   @override
   void initState() {
-    controller = PageController(initialPage: currentScreen);
-    screens = [HomeView(), CartView(), OrderHistory(), SettingView()];
     super.initState();
+    controller = PageController(initialPage: currentScreen);
+    screens = const [
+      HomeView(),
+      CartView(),
+      OrderHistory(),
+      SettingView(),
+    ];
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      // تمديد الجسم ليأخذ الشاشة كاملة
+      extendBody: true,
       body: PageView(
         controller: controller,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         children: screens,
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: AppColors.primaryColor,
-          borderRadius: BorderRadius.circular(80),
+        color: Colors.transparent,
+        child: SafeArea(
+          bottom: true,
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: 16.w,
+              right: 16.w,
+              bottom: 8.h,
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppColors.primaryColor,
+                borderRadius: BorderRadius.circular(30.r),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.15),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(30.r),
+                child: navigationBar(),
+              ),
+            ),
+          ),
         ),
-        child: navigationBar(),
       ),
     );
   }
 
-  BottomNavigationBar navigationBar() {
+  Widget navigationBar() {
     return BottomNavigationBar(
-       
-      
-
       showUnselectedLabels: false,
       enableFeedback: true,
       currentIndex: currentScreen,
@@ -63,16 +96,23 @@ class _RootState extends State<Root> {
       backgroundColor: Colors.transparent,
       type: BottomNavigationBarType.fixed,
       selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.grey.shade500,
-      items: [
-        BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(CupertinoIcons.cart), label: 'Cart'),
+      unselectedItemColor: Colors.grey.shade400,
+      iconSize: 22.sp,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_filled),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(CupertinoIcons.cart),
+          label: 'Cart',
+        ),
         BottomNavigationBarItem(
           icon: Icon(Icons.local_restaurant_sharp),
           label: 'Order History',
         ),
         BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.settings),
+          icon: Icon(Icons.settings),
           label: 'Setting',
         ),
       ],

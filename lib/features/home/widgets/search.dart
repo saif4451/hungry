@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hungry/core/constants/app_colors.dart';
-
 class Search extends StatelessWidget {
   const Search({super.key});
 
