@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/features/checkout/widget/check_out_rows.dart';
+import 'package:hungry/features/checkout/widget/payment_method.dart';
 import 'package:hungry/shared/price_bar.dart';
 
 class ChekoutView extends StatefulWidget {
@@ -14,6 +15,7 @@ class ChekoutView extends StatefulWidget {
 class _ChekoutViewState extends State<ChekoutView> {
   bool isChecked = false;
   String selectedMethod = 'cash';
+  final double total = 160 ;
 
   @override
   Widget build(BuildContext context) {
@@ -97,81 +99,12 @@ class _ChekoutViewState extends State<ChekoutView> {
                       ),
                       Gap(16.h),
 
-                      // Cash Method
-                      ListTile(
-                        tileColor: const Color(0xFF3C2F2F),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.r),
-                        ),
-                        contentPadding: EdgeInsets.symmetric(
-                          horizontal: 12.w,
-                          vertical: 4.h,
-                        ),
-                        title: Text(
-                          'Cash on Delivery',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        leading: Image.asset('assets/cash.png', width: 32.w),
-                        trailing: Radio<String>(
-                          activeColor: Colors.white,
-                          value: 'cash',
-                          groupValue: selectedMethod,
-                          onChanged: (v) {
-                            setState(() {
-                              selectedMethod = v!;
-                            });
-                          },
-                        ),
-                      ),
-                      Gap(12.h),
 
-                      // Debit Method
-                      ListTile(
-                        tileColor: Colors.blue.shade900,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.r),
-                        ),
-                        contentPadding: EdgeInsets.symmetric(
-                          horizontal: 12.w,
-                          vertical: 4.h,
-                        ),
-                        title: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Debit Card',
-                              style: TextStyle(
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Gap(2.h),
-                            Text(
-                              '3566 **** **** 0505',
-                              style: TextStyle(
-                                fontSize: 12.sp,
-                                color: Colors.white70,
-                              ),
-                            ),
-                          ],
-                        ),
-                        leading: Image.asset('assets/visa.png', width: 40.w),
-                        trailing: Radio<String>(
-                          activeColor: Colors.white,
-                          value: 'visa',
-                          groupValue: selectedMethod,
-                          onChanged: (v) {
-                            setState(() {
-                              selectedMethod = v!;
-                            });
-                          },
-                        ),
-                      ),
+
+                      PaymentMethod(),
+
+
+
                       Gap(8.h),
                       Row(
                         children: [
@@ -206,20 +139,34 @@ class _ChekoutViewState extends State<ChekoutView> {
               ),
 
               // Bottom PriceBar
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 12.h),
-                child: PriceBar(
-                  total: 160,
-                  customBtn: 'Pay Now',
-                  customBtnFontSize: 18.sp,
-                  customBtnHoreizentalPadding: 33.w,
-                  onBtnTap: () {
 
-                  },
-                ),
-              ),
             ],
           ),
+        ),
+      ),
+      bottomSheet: Container(
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.r),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.5),
+              blurRadius: 10,
+              spreadRadius: 1,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        height: 130.h,
+        child: PriceBar(customBtnFontSize: 16,
+
+          customBtnHoreizentalPadding: 30,
+          total: total,
+          customBtn: 'Pay Now',
+          onBtnTap: () {
+
+          },
         ),
       ),
     );

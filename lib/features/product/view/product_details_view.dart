@@ -14,8 +14,8 @@ class ProductDetailsView extends StatefulWidget {
 }
 
 class _ProductDetailsViewState extends State<ProductDetailsView> {
-  double total = 18.19;
-  final food = ['Tomato', 'Onions', 'Pickles', 'Bacons'];
+  double total = 20;
+  final food = ['Tomato', 'Onions', 'Pickles', 'Becons'];
   double value = 0.3;
 
   @override
@@ -25,6 +25,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: Icon(Icons.arrow_back, size: 24.sp, color: Colors.black),
@@ -41,7 +42,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // top bar / spicy slider
+
                       SpicySlider(
                         value: value,
                         onChanged: (v) {
@@ -62,7 +63,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                         child: Row(
                           children: List.generate(4, (index) {
                             return Padding(
-                              padding: EdgeInsets.only(right: 12.w),
+                              padding: EdgeInsets.only(right: 14.w),
                               child: ToppingCard(
                                 image: 'assets/top${index + 1}.png',
                                 title: food[index],
@@ -75,7 +76,6 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
 
                       CustomText(text: 'Side options', size: 18.sp),
                       Gap(12.h),
-
 
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -92,26 +92,38 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           }),
                         ),
                       ),
-                      Gap(20.h),
+
+                      Gap(130.h),
                     ],
                   ),
                 ),
               ),
-
-
-              Padding(
-                padding: EdgeInsets.only(bottom: 16.h, top: 8.h),
-                child: PriceBar(
-                  customBtnHoreizentalPadding: 25,
-                  total: total, // ربط بالمتغير Dynamic
-                  customBtn: 'Add To Cart',
-                  onBtnTap: () {
-                    // إضافة إلى السلة
-                  },
-                ),
-              ),
             ],
           ),
+        ),
+      ),
+      bottomSheet: Container(
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.r),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.5),
+              blurRadius: 10,
+              spreadRadius: 1,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        height: 130.h,
+        child: PriceBar(
+          customBtnHoreizentalPadding: 25,
+          total: total,
+          customBtn: 'Add To Cart',
+          onBtnTap: () {
+
+          },
         ),
       ),
     );

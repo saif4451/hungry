@@ -36,7 +36,7 @@ class CategoryHome extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10.h),
               decoration: BoxDecoration(
                 color: isSelected ? AppColors.primaryColor : const Color(0xffF3F4F6),
-                borderRadius: BorderRadius.circular(20.r), // استخدام r للتجاوب
+                borderRadius: BorderRadius.circular(20.r),
               ),
               child: CustomText(
                 text: catogery[index],

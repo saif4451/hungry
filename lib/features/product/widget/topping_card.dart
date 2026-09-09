@@ -18,15 +18,16 @@ class ToppingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: 6,
+      elevation: 2,
+
       shadowColor: AppColors.greyColor,
-      borderRadius: BorderRadius.circular(32),
+      borderRadius: BorderRadius.circular(32.r),
 
       child: Container(
-        width: 120.w,
-        height: 130.h,
+        width: 115.w,
+        height: 120.h,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(32.r),
           color: Colors.white,
         ),
         clipBehavior: Clip.antiAlias,
@@ -59,7 +60,7 @@ class ToppingCard extends StatelessWidget {
                     CustomText(
                       text: 'Tomato',
                       color: Colors.white,
-                      size: 15,
+                      size: 15.sp,
                       weight: FontWeight.w600,
                     ),
                     Spacer(),
@@ -71,7 +72,7 @@ class ToppingCard extends StatelessWidget {
                           color: Color(0xFFFF3344),
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(Icons.add, color: Colors.white, size: 20),
+                        child: Icon(Icons.add, color: Colors.white, size: 20.sp),
                       ),
                     ),
                   ],

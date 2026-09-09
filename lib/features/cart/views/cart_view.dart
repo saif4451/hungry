@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/features/cart/widgets/card_item.dart';
-import 'package:hungry/features/checkout/view/chekout_view.dart';
 import 'package:hungry/shared/price_bar.dart';
+
+import '../../checkout/view/chekout_view.dart';
 
 class CartView extends StatefulWidget {
   const CartView({super.key});
@@ -13,8 +14,8 @@ class CartView extends StatefulWidget {
 }
 
 class _CartViewState extends State<CartView> {
-  final int itemCount = 4;
-  final double itemUnitPrice = 24.80;
+  final int itemCount = 6;
+  final double itemUnitPrice = 60;
   late List<int> counterMele;
 
   double get total {
@@ -60,15 +61,46 @@ class _CartViewState extends State<CartView> {
           ),
         ),
       ),
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          SliverGap(12.h),
+      body: Column(
+        children: [
+          // 1. الجزء الثابت فوق (PriceBar)
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30.r),
+                bottomRight: Radius.circular(30.r),
+              ),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.3),
+                  blurRadius: 10,
+                  spreadRadius: 1,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            height: 104.h,
+            child: PriceBar(
+              customBtnHoreizentalPadding: 25,
+              total: total,
+              customBtn: 'Check out',
+              onBtnTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChekoutView()),
+              ),
+            ),
+          ),
+          Gap(10.h),
 
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            sliver: SliverList.separated(
+          Expanded(
+            child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
               itemCount: itemCount,
+              separatorBuilder: (context, index) =>
+                  counterMele[index] == counterMele.last ? Gap(12.h) : Gap(130.h),
               itemBuilder: (context, index) {
                 return CardItem(
                   onAddTap: () => onAdd(index),
@@ -79,30 +111,8 @@ class _CartViewState extends State<CartView> {
                   number: counterMele[index],
                 );
               },
-              separatorBuilder: (context, index) => Gap(12.h),
             ),
           ),
-
-          SliverGap(24.h),
-
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: PriceBar(
-                customBtnFontSize: 18.sp,
-                total: total,
-                customBtn: 'Checkout',
-                onBtnTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ChekoutView()),
-                ),
-                customBtnHoreizentalPadding: 30.w,
-                customBtnVerticalPadding: 18.h,
-              ),
-            ),
-          ),
-
-          SliverGap(100.h),
         ],
       ),
     );

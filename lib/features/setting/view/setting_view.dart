@@ -30,7 +30,7 @@ class SettingView extends StatelessWidget {
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          SliverGap(16.h),
+          SliverGap(22.h),
 
           SliverPadding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),

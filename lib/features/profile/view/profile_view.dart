@@ -38,17 +38,17 @@ class _ProfileViewState extends State<ProfileView> {
     super.dispose();
   }
 
-  // 2. دالة حفظ البيانات (جاهزة لربط Firebase مستقبلاً)
+
   void _saveProfileData() {
     FocusScope.of(context).unfocus();
 
-    // هنا يتم قراءة البيانات المعدلة
+
     final name = _nameController.text.trim();
     final email = _emailController.text.trim();
     final address = _addressController.text.trim();
     final password = _passwordController.text.trim();
 
-    // TODO: مستقبلاً يتم رفع هذه المتغيرات إلى Firebase Firestore / Auth
+
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
@@ -81,7 +81,7 @@ class _ProfileViewState extends State<ProfileView> {
             children: [
               Gap(10.h),
 
-              // الصورة الشخصية
+
               Center(
                 child: Stack(
                   children: [
@@ -145,7 +145,7 @@ class _ProfileViewState extends State<ProfileView> {
               ),
               Gap(24.h),
 
-              // زر حفظ التعديلات
+
               ElevatedButton(
                 onPressed: _saveProfileData,
                 style: ElevatedButton.styleFrom(
@@ -169,7 +169,7 @@ class _ProfileViewState extends State<ProfileView> {
               Divider(color: Colors.white24, thickness: 1.h),
               Gap(20.h),
 
-              // كارت طريقة الدفع
+
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
                 decoration: BoxDecoration(
@@ -224,7 +224,7 @@ class _ProfileViewState extends State<ProfileView> {
     );
   }
 
-  // ودجت للحقول القابلة للكتابة والتعديل بنفس شكل التصميم
+
   Widget _buildEditableField({
     required String label,
     required TextEditingController controller,

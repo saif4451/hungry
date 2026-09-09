@@ -24,15 +24,15 @@ class CardItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(image, width: 180),
+            Center(child: Image.asset(image, width: 130,height: 130,)),
             Gap(10.h),
-            CustomText(text: text, size: 16, weight: FontWeight.w600),
-            CustomText(text: des, size: 16, weight: FontWeight.w500),
+            CustomText(text: text, size: 14.sp, weight: FontWeight.w600),
+            CustomText(text: des, size: 14.sp, weight: FontWeight.w500),
             Row(
               children: [
-                CustomText(text: '⭐ $rate', size: 16, weight: FontWeight.w500),
+                CustomText(text: '⭐ $rate', size: 14.sp, weight: FontWeight.w500),
                 Spacer(),
-                Icon(CupertinoIcons.heart, color: AppColors.primaryColor),
+                Icon(CupertinoIcons.heart, color: AppColors.primaryColor,size: 20,),
               ],
             ),
           ],

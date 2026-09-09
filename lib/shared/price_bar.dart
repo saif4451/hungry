@@ -10,7 +10,7 @@ class PriceBar extends StatelessWidget {
     super.key,
     required this.total,
     required this.customBtn,
-    this.customBtnVerticalPadding = 20,
+    this.customBtnVerticalPadding = 15,
     this.customBtnHoreizentalPadding = 35,
     this.customBtnFontSize = 16,
     this.onBtnTap,
@@ -25,38 +25,44 @@ class PriceBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Gap(12.w),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        // total
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
 
-          children: [
-            CustomText(text: 'Total', size: 20.sp, weight: FontWeight.w900),
+            children: [
+              CustomText(text: 'Total', size: 20.sp, weight: FontWeight.w900),
 
-            Row(
-              spacing: 2,
-              children: [
-                CustomText(text: 'EGP', size: 16.sp, weight: FontWeight.w900),
-                CustomText(
-                  text: '$total',
-                  size: 30.sp,
-                  weight: FontWeight.w700,
-                ),
-              ],
-            ),
-          ],
+              Row(
+                spacing: 2,
+                children: [
+                  CustomText(text: 'EGP', size: 16.sp, weight: FontWeight.w900),
+                  CustomText(
+                    text: '$total',
+                    size: 30.sp,
+                    weight: FontWeight.w700,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
-        Gap(120.w),
 
         // btn
-        CustomBtn(
-          onTap: onBtnTap,
-          text: customBtn,
-          verticalPadding: customBtnVerticalPadding,
-          horizontalPadding: customBtnHoreizentalPadding,
-          size: customBtnFontSize,
+        Container(
+          margin: EdgeInsets.only(bottom: 16.h),
+          height: 65,
+          child: CustomBtn(
+            onTap: onBtnTap,
+            text: customBtn,
+            verticalPadding: customBtnVerticalPadding,
+            horizontalPadding: customBtnHoreizentalPadding,
+            size: customBtnFontSize,
+          ),
         ),
-        
       ],
     );
   }
