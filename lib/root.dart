@@ -40,8 +40,7 @@ class _RootState extends State<Root> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      // تمديد الجسم ليأخذ الشاشة كاملة
+
       extendBody: true,
       body: PageView(
         controller: controller,

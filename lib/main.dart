@@ -1,9 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hungry/features/splash/splash_screen.dart';
-import 'package:hungry/root.dart';
+import 'dart:io';
 
-void main() {
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hungry/features/auth/views/login_view.dart';
+import 'package:hungry/features/splash/splash_screen.dart';
+
+
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+ await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp
+  ]);
   runApp(MyApp());
 }
 

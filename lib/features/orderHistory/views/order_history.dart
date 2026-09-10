@@ -13,6 +13,7 @@ class OrderHistory extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         elevation: 0,
         scrolledUnderElevation: 0,
@@ -91,7 +92,7 @@ class OrderHistory extends StatelessWidget {
                       ),
                       Gap(10.h),
 
-                      // زر صغير وأنيق على اليمين بدلاً من الزر العريض القاسي
+
                       Align(
                         alignment: Alignment.centerRight,
                         child: InkWell(

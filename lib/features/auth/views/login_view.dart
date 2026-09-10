@@ -19,6 +19,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  // email & password
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -47,14 +48,9 @@ class _LoginViewState extends State<LoginView> {
               key: formKey,
 
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-
                 children: [
                   Gap(80.h),
 
-                  // =========================
-                  // Logo
-                  // =========================
                   Center(
                     child: SvgPicture.asset(
                       'assets/logo/logo.svg',
@@ -64,9 +60,6 @@ class _LoginViewState extends State<LoginView> {
 
                   Gap(12.h),
 
-                  // =========================
-                  // Subtitle
-                  // =========================
                   Center(
                     child: CustomText(
                       text: 'Delicious Meals, Delivered Fast',
@@ -76,13 +69,8 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ),
 
-                  Gap(45.h),
+                  Gap(75.h),
 
-                  Gap(30.h),
-
-                  // =========================
-                  // Email
-                  // =========================
                   CustomTextField(
                     controller: emailController,
                     hint: 'Email Address',
@@ -91,9 +79,6 @@ class _LoginViewState extends State<LoginView> {
 
                   Gap(18.h),
 
-                  // =========================
-                  // Password
-                  // =========================
                   CustomTextField(
                     controller: passwordController,
                     hint: 'Password',
@@ -103,9 +88,6 @@ class _LoginViewState extends State<LoginView> {
 
                   Gap(12.h),
 
-                  // =========================
-                  // Forgot Password
-                  // =========================
                   Align(
                     alignment: Alignment.centerRight,
 
@@ -129,9 +111,6 @@ class _LoginViewState extends State<LoginView> {
 
                   Gap(35.h),
 
-                  // =========================
-                  // Login Button
-                  // =========================
                   GestureDetector(
                     onTap: () {
                       if (formKey.currentState!.validate()) {
@@ -142,15 +121,8 @@ class _LoginViewState extends State<LoginView> {
                     child: CustomLoginBtn(text: 'Login'),
                   ),
 
-                  Gap(25.h),
+                  Gap(37.h),
 
-                  // =========================
-                  // Divider
-                  // =========================
-                  Gap(12.h),
-                  // =========================
-                  // Divider
-                  // =========================
                   Row(
                     children: [
                       Expanded(
@@ -175,9 +147,7 @@ class _LoginViewState extends State<LoginView> {
                       ),
                     ],
                   ),
-                  // =========================
-                  // Create Account
-                  // =========================
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
 
@@ -225,21 +195,32 @@ class _LoginViewState extends State<LoginView> {
                         MaterialPageRoute(builder: (context) => Root()),
                       );
                     },
-                    child: Row(
-                      spacing: 3.w,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Continue as a Guest ',
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 12.w,
+                        vertical: 4.h,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(22.r),
+                        border: Border.all(color: Colors.white, width: 2),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        spacing: 3.w,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Continue as a Guest ',
 
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 18,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18.sp,
+                            ),
                           ),
-                        ),
-                        Icon(Icons.login, color: Colors.white),
-                      ],
+                          Icon(Icons.login, color: Colors.white),
+                        ],
+                      ),
                     ),
                   ),
                 ],

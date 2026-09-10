@@ -37,7 +37,7 @@ class PriceBar extends StatelessWidget {
               CustomText(text: 'Total', size: 20.sp, weight: FontWeight.w900),
 
               Row(
-                spacing: 2,
+                spacing: 2.w,
                 children: [
                   CustomText(text: 'EGP', size: 16.sp, weight: FontWeight.w900),
                   CustomText(
@@ -54,7 +54,7 @@ class PriceBar extends StatelessWidget {
         // btn
         Container(
           margin: EdgeInsets.only(bottom: 16.h),
-          height: 65,
+          height: 65.h,
           child: CustomBtn(
             onTap: onBtnTap,
             text: customBtn,

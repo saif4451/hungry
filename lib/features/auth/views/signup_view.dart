@@ -15,15 +15,13 @@ class SignupView extends StatefulWidget {
 }
 
 class _SignupViewState extends State<SignupView> {
-  // =========================
+
   // Controllers
-  // =========================
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -58,9 +56,6 @@ class _SignupViewState extends State<SignupView> {
                 children: [
                   Gap(55.h),
 
-                  // =========================
-                  // Logo
-                  // =========================
                   Center(
                     child: SvgPicture.asset(
                       'assets/logo/logo.svg',
@@ -69,13 +64,6 @@ class _SignupViewState extends State<SignupView> {
                   ),
 
                   Gap(25.h),
-
-                  // =========================
-                  // Title
-                  // =========================
-
-
-
 
                   Text(
                     'Join Hungry and enjoy delicious meals anytime.',
@@ -98,9 +86,6 @@ class _SignupViewState extends State<SignupView> {
 
                   Gap(20.h),
 
-                  // =========================
-                  // Name
-                  // =========================
                   CustomTextField(
                     hint: 'Name',
                     controller: nameController,
@@ -109,9 +94,6 @@ class _SignupViewState extends State<SignupView> {
 
                   Gap(18.h),
 
-                  // =========================
-                  // Email
-                  // =========================
                   CustomTextField(
                     hint: 'Email Address',
                     controller: emailController,
@@ -120,9 +102,6 @@ class _SignupViewState extends State<SignupView> {
 
                   Gap(18.h),
 
-                  // =========================
-                  // Password
-                  // =========================
                   CustomTextField(
                     hint: 'Password',
                     controller: passwordController,
@@ -144,9 +123,6 @@ class _SignupViewState extends State<SignupView> {
 
                   Gap(30.h),
 
-                  // =========================
-                  // Sign Up Button
-                  // =========================
                   GestureDetector(
                     onTap: () {
                       if (formKey.currentState!.validate()) {
@@ -171,9 +147,7 @@ class _SignupViewState extends State<SignupView> {
 
                   Gap(22.h),
 
-                  // =========================
-                  // Login
-                  // =========================
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
 
@@ -208,7 +182,7 @@ class _SignupViewState extends State<SignupView> {
                     ],
                   ),
 
-                  Gap(25.h),
+
                 ],
               ),
             ),
