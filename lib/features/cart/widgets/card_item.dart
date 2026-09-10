@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-
 import 'package:hungry/features/cart/widgets/add_btn.dart';
-import 'package:hungry/features/setting/widgets/custom_btn_setting.dart';
 import 'package:hungry/shared/custom_btn.dart';
 import 'package:hungry/shared/custom_text.dart';
 

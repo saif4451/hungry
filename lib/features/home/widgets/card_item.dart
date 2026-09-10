@@ -26,6 +26,7 @@ class CardItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
+
                 children: [
                   Positioned(
                       right: 0,
@@ -33,7 +34,7 @@ class CardItem extends StatelessWidget {
                       bottom: -5,
           
                       child: Image.asset('assets/shadow.png')),
-                  Center(child: Image.asset(image, width: 130, height: 130)),
+                  Center(child: Image.asset(image, width: 130.w, height: 130.h)),
           
                 ],
               ),
