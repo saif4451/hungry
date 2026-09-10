@@ -28,8 +28,11 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           home: SplashView(),
           theme: ThemeData(
+            splashColor: Colors.transparent,
+
             scaffoldBackgroundColor: Colors.white,
             appBarTheme: AppBarTheme(
+
               surfaceTintColor: Colors.white,
               backgroundColor: Colors.white,
               centerTitle: true,
