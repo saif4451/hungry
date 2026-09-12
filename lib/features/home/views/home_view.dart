@@ -31,20 +31,16 @@ class _HomeViewState extends State<HomeView> {
             slivers: [
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: Column(
-                    children: [
-                      const UserHeader(),
-                      Gap(16.h),
-                      const Search(),
-                    ],
+                    children: [const UserHeader(), Gap(16.h), const Search()],
                   ),
                 ),
               ),
 
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+                  padding: EdgeInsets.only(top: 14.h, left: 6.w, right: 6.w),
                   child: CategoryHome(
                     selectedIndex: selectedIndex,
                     catogery: catogery,
@@ -60,27 +56,27 @@ class _HomeViewState extends State<HomeView> {
               SliverPadding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
                 sliver: SliverGrid(
-                  delegate: SliverChildBuilderDelegate(
-                    childCount: 6,
-                        (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const ProductDetailsView(),
-                            ),
-                          );
-                        },
-                        child: CardItem(
-                          image: 'assets/sw${index + 1}.png',
-                          text: 'Cheeseburger',
-                          des: 'Wendy\'s Burger',
-                          rate: '4.9',
-                        ),
-                      );
-                    },
-                  ),
+                  delegate: SliverChildBuilderDelegate(childCount: 6, (
+                    context,
+                    index,
+                  ) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProductDetailsView(),
+                          ),
+                        );
+                      },
+                      child: CardItem(
+                        image: 'assets/sw${index + 1}.png',
+                        text: 'Cheeseburger',
+                        des: 'Wendy\'s Burger',
+                        rate: '4.9',
+                      ),
+                    );
+                  }),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 12.w,

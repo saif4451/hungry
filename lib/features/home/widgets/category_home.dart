@@ -32,15 +32,15 @@ class CategoryHome extends StatelessWidget {
             },
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
-              margin: EdgeInsets.symmetric(horizontal: 4.w),
-              padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10.h),
+              margin: EdgeInsets.symmetric(horizontal: 5.w),
+              padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 12.h),
               decoration: BoxDecoration(
                 color: isSelected ? AppColors.primaryColor : const Color(0xffF3F4F6),
                 borderRadius: BorderRadius.circular(20.r),
               ),
               child: CustomText(
                 text: catogery[index],
-                size: 14.sp,
+                size: 16.sp,
                 weight: isSelected ? FontWeight.bold : FontWeight.w500,
                 color: isSelected ? Colors.white : Colors.black87,
               ),

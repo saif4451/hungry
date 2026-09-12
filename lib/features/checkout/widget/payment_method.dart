@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 class PaymentMethod extends StatefulWidget {
-
   const PaymentMethod({super.key});
 
   @override
@@ -18,6 +17,12 @@ class _PaymentMethodState extends State<PaymentMethod> {
   static const Color textColor = Color(0xFF3C2F2F);
   static const Color primaryColor = Color(0xFFE53935);
 
+  void _selectMethod(String method) {
+    setState(() {
+      selectedMethod = method;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -27,6 +32,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
         //     Cash on Delivery
         // =========================
         ListTile(
+          onTap: () => _selectMethod('cash'), // الضغط على الكارت كامل
           tileColor: cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.r),
@@ -51,18 +57,15 @@ class _PaymentMethodState extends State<PaymentMethod> {
             value: 'cash',
             groupValue: selectedMethod,
             activeColor: Colors.green.shade600,
-            onChanged: (value) {
-              setState(() {
-                selectedMethod = value!;
-              });
-            },
+            onChanged: (value) => _selectMethod(value!),
           ),
         ),
 
         // =========================
-        //       Debit Card
+        //        Debit Card
         // =========================
         ListTile(
+          onTap: () => _selectMethod('visa'), // الضغط على الكارت كامل
           tileColor: cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.r),
@@ -97,19 +100,15 @@ class _PaymentMethodState extends State<PaymentMethod> {
             value: 'visa',
             groupValue: selectedMethod,
             activeColor: Colors.blue.shade600,
-            onChanged: (value) {
-              setState(() {
-                selectedMethod = value!;
-              });
-            },
+            onChanged: (value) => _selectMethod(value!),
           ),
         ),
 
         // =========================
-        //     Vodafone Cash
+        //      Vodafone Cash
         // =========================
-
         ListTile(
+          onTap: () => _selectMethod('vodafone'),
           tileColor: cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.r),
@@ -144,11 +143,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
             value: 'vodafone',
             groupValue: selectedMethod,
             activeColor: primaryColor,
-            onChanged: (value) {
-              setState(() {
-                selectedMethod = value!;
-              });
-            },
+            onChanged: (value) => _selectMethod(value!),
           ),
         ),
       ],
