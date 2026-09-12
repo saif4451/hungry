@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hungry/core/utils/validators.dart';
 import 'package:hungry/features/auth/views/signup_view.dart';
 import 'package:hungry/root.dart';
 
@@ -75,6 +76,7 @@ class _LoginViewState extends State<LoginView> {
                     controller: emailController,
                     hint: 'Email Address',
                     icon: const Icon(Icons.email_outlined),
+                    validator: AppValidators.validateEmail,
                   ),
 
                   Gap(18.h),
@@ -84,6 +86,7 @@ class _LoginViewState extends State<LoginView> {
                     hint: 'Password',
                     icon: const Icon(Icons.lock_outline),
                     isPassword: true,
+                    validator: AppValidators.validatePassword,
                   ),
 
                   Gap(12.h),
@@ -197,12 +200,12 @@ class _LoginViewState extends State<LoginView> {
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 12.w,
-                        vertical: 4.h,
+                        horizontal: 50.w,
+                        vertical: 14.h,
                       ),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(22.r),
-                        border: Border.all(color: Colors.white, width: 2),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(18.r),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -213,12 +216,12 @@ class _LoginViewState extends State<LoginView> {
                             'Continue as a Guest ',
 
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.primaryColor,
                               fontWeight: FontWeight.w700,
-                              fontSize: 18.sp,
+                              fontSize: 20.sp,
                             ),
                           ),
-                          Icon(Icons.login, color: Colors.white),
+                          Icon(Icons.login, color: AppColors.primaryColor),
                         ],
                       ),
                     ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hungry/core/constants/app_theme.dart';
 import 'package:hungry/features/splash/splash_screen.dart';
 
 
@@ -24,19 +25,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           home: SplashView(),
-          theme: ThemeData(
-            splashColor: Colors.transparent,
-
-            scaffoldBackgroundColor: Colors.white,
-            appBarTheme: AppBarTheme(
-
-              surfaceTintColor: Colors.white,
-              backgroundColor: Colors.white,
-              centerTitle: true,
-              elevation: 0,
-              toolbarHeight: 45.h,
-            ),
-          ),
+          theme: AppTheme.appTheme,
         );
       },
     );

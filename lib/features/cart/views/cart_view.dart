@@ -46,7 +46,6 @@ class _CartViewState extends State<CartView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -98,11 +97,15 @@ class _CartViewState extends State<CartView> {
 
           Expanded(
             child: ListView.separated(
+              padding: EdgeInsets.only(
+                bottom: 110.0.h,
+                left: 14.w,
+                right: 14.w,
+              ),
               physics: const BouncingScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+
               itemCount: itemCount,
-              separatorBuilder: (context, index) =>
-                  counterMele[index] == counterMele.last ? Gap(12.h) : Gap(130.h),
+              separatorBuilder: (context, index) => Gap(12.h),
               itemBuilder: (context, index) {
                 return CardItem(
                   onAddTap: () => onAdd(index),
